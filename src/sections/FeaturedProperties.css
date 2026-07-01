@@ -1,0 +1,353 @@
+/* ============================================================
+   FEATURED PROPERTIES — Lookbook Grid
+   ============================================================ */
+
+.fp-section {
+  padding: 120px 0;
+  background: var(--canvas);
+}
+
+.fp-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- Header ---- */
+.fp-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+
+.fp-header-left {}
+
+.fp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-top: 16px;
+}
+
+.fp-title em { font-style: italic; color: var(--gold-deep); }
+
+.fp-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.fp-desc {
+  font-size: 15px;
+  color: var(--ink-light);
+  line-height: 1.75;
+  text-align: right;
+  max-width: 340px;
+}
+
+.fp-see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s, gap 0.2s var(--ease-spring);
+}
+
+.fp-see-all:hover {
+  color: var(--gold-deep);
+  border-color: var(--gold-deep);
+  gap: 12px;
+}
+
+/* ---- Filter tabs ---- */
+.fp-filters {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--canvas-3);
+  padding-bottom: 0;
+}
+
+.fp-filter-btn {
+  position: relative;
+  padding: 10px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+  margin-bottom: -1px;
+}
+
+.fp-filter-btn:hover { color: var(--ink); }
+
+.fp-filter-btn.active {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.fp-filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px; right: 20px;
+  height: 2px;
+  background: var(--ink);
+}
+
+/* ---- Lookbook Grid ---- */
+/* 2-col: left col has 1 tall card, right col has 2 portrait cards stacked */
+.fp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+/* Feature card — takes full left column */
+.fp-card--feature {
+  grid-row: span 2;
+}
+
+/* ---- Card base ---- */
+.fp-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--canvas-2);
+  cursor: pointer;
+}
+
+.fp-card-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Feature card height */
+.fp-card--feature .fp-card-img {
+  height: 680px;
+}
+
+/* Regular card height */
+.fp-card:not(.fp-card--feature) .fp-card-img {
+  height: 336px;
+}
+
+.fp-card-img {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.fp-card:hover .fp-card-img {
+  transform: scale(1.04);
+}
+
+/* Dark gradient from bottom */
+.fp-card-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(17,17,16,0.85) 0%,
+    rgba(17,17,16,0.3)  50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Content overlay pinned bottom */
+.fp-card-body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 32px;
+}
+
+.fp-card-tag {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.fp-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--canvas);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.fp-card--feature .fp-card-name {
+  font-size: 32px;
+}
+
+.fp-card-specs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.fp-card-spec {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(247,244,239,0.5);
+}
+
+.fp-card-spec svg { flex-shrink: 0; }
+
+.fp-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fp-card-price {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--canvas);
+}
+
+.fp-card-price-from {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  color: rgba(247,244,239,0.4);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.fp-card-arrow {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(247,244,239,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(247,244,239,0.6);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.fp-card:hover .fp-card-arrow {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+/* Status badge top-right */
+.fp-card-status {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--canvas);
+  background: rgba(17,17,16,0.5);
+  backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+/* ---- Bottom CTA ---- */
+.fp-cta-bar {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--canvas-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.fp-cta-note {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .fp-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .fp-header-right { align-items: flex-start; }
+  .fp-desc { text-align: left; }
+
+  .fp-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .fp-card--feature { grid-row: span 1; }
+
+  .fp-card--feature .fp-card-img,
+  .fp-card:not(.fp-card--feature) .fp-card-img {
+    height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fp-section { padding: 72px 0; }
+  .fp-inner { padding: 0 20px; }
+
+  .fp-card--feature .fp-card-img,
+  .fp-card:not(.fp-card--feature) .fp-card-img {
+    height: 280px;
+  }
+
+  .fp-card-body { padding: 16px 18px; }
+  .fp-card-name { font-size: 18px; }
+  .fp-card--feature .fp-card-name { font-size: 22px; }
+
+  .fp-cta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fp-filters {
+    overflow-x: auto;
+    padding-bottom: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  .fp-inner { padding: 0 16px; }
+  .fp-header { margin-bottom: 32px; }
+  .fp-filters { margin-bottom: 28px; }
+}

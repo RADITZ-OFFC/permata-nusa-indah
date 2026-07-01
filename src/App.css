@@ -1,0 +1,16 @@
+/* Root layout */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Main content grows to push footer down */
+#root > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* prevent flex children from overflowing */
+}

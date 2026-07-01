@@ -1,0 +1,244 @@
+/* ============================================================
+   WHY US — Prose editorial
+   ============================================================ */
+
+.whyus-section {
+  padding: 120px 0;
+  background: var(--canvas-2);
+}
+
+.whyus-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+/* ---- Left: prose ---- */
+.whyus-left {}
+
+.whyus-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 16px 0 28px;
+}
+
+.whyus-title em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+
+.whyus-lead {
+  font-size: 17px;
+  color: var(--ink-light);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* Highlights — card style with left gold bar */
+.whyus-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.whyus-hl-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 20px 20px 16px;
+  background: var(--canvas);
+  border: 1px solid var(--canvas-3);
+  border-left: 3px solid var(--gold);
+  cursor: default;
+  /* transform & shadow handled by framer-motion whileHover */
+}
+
+.whyus-hl-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  padding-top: 3px;
+  text-align: center;
+  display: block;
+  transition: color 0.2s;
+}
+
+.whyus-hl-text strong {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  /* color transition handled by framer-motion */
+}
+
+.whyus-hl-text span {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.whyus-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s, gap 0.2s var(--ease-spring);
+}
+
+.whyus-cta:hover {
+  color: var(--gold-deep);
+  border-color: var(--gold-deep);
+  gap: 12px;
+}
+
+/* ---- Right: photo + large number ---- */
+.whyus-right {
+  position: sticky;
+  top: 100px;
+}
+
+.whyus-photo-wrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: visible; /* badge perlu visible di desktop */
+  background: var(--canvas-3);
+}
+
+@media (max-width: 600px) {
+  .whyus-photo-wrap {
+    overflow: hidden; /* clip badge di mobile agar tidak overflow viewport */
+  }
+}
+
+.whyus-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.whyus-photo-wrap:hover .whyus-photo {
+  transform: scale(1.04);
+}
+
+/* Floating stat badge */
+.whyus-stat-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -16px;
+  background: var(--ink);
+  color: var(--canvas);
+  padding: 20px 24px;
+  min-width: 140px;
+  z-index: 2;
+}
+
+.whyus-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--gold-light);
+  display: block;
+}
+
+.whyus-stat-lbl {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.5);
+  margin-top: 4px;
+  display: block;
+}
+
+/* Award strip below photo */
+.whyus-awards {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--canvas-3);
+}
+
+.whyus-award-item {
+  flex: 1;
+}
+
+.whyus-award-item strong {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.whyus-award-item span {
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .whyus-inner {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .whyus-right {
+    position: static;
+    max-width: 540px;
+  }
+
+  .whyus-photo-wrap { aspect-ratio: 3/2; }
+}
+
+@media (max-width: 600px) {
+  .whyus-section { padding: 72px 0; }
+  .whyus-inner { padding: 0 20px; gap: 40px; }
+
+  /* Badge di mobile: jangan keluar viewport */
+  .whyus-stat-badge {
+    bottom: -14px;
+    left: 0;
+    min-width: 120px;
+    padding: 16px 18px;
+  }
+
+  .whyus-stat-num { font-size: 40px; }
+
+  /* Awards: 2 col on small */
+  .whyus-awards { flex-wrap: wrap; gap: 12px; }
+  .whyus-award-item { min-width: calc(50% - 6px); }
+
+  .whyus-lead { font-size: 15px; }
+}

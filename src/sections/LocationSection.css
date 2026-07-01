@@ -1,0 +1,276 @@
+/* ============================================================
+   LOCATION — Editorial
+   ============================================================ */
+
+.loc-section {
+  padding: 120px 0;
+  background: var(--canvas);
+}
+
+.loc-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- Header ---- */
+.loc-header { margin-bottom: 56px; }
+
+.loc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 16px 0 14px;
+}
+
+.loc-title em { font-style: italic; color: var(--gold-deep); }
+
+.loc-subtitle {
+  font-size: 15px;
+  color: var(--ink-light);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+/* ---- Layout ---- */
+.loc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ---- Map panel ---- */
+.loc-map-panel {}
+
+.loc-map-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--canvas-3);
+  border: 1px solid var(--canvas-3);
+}
+
+.loc-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--canvas-3);
+  background: var(--canvas);
+}
+
+.loc-map-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-light);
+}
+
+.loc-map-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  transition: color 0.2s;
+}
+
+.loc-map-open-link:hover { color: var(--ink); }
+
+.loc-map-iframe {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: none;
+  filter: grayscale(0.55) contrast(1.08) brightness(0.97);
+  transition: filter 0.4s ease;
+}
+
+.loc-map-iframe:hover {
+  filter: grayscale(0.15) contrast(1.02) brightness(1);
+}
+
+/* Address strip */
+.loc-address {
+  margin-top: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--canvas-2);
+  border: 1px solid var(--canvas-3);
+}
+
+.loc-address-icon {
+  width: 36px; height: 36px;
+  background: var(--ink);
+  color: var(--canvas);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.loc-address-text strong {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.loc-address-text p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.loc-address-hours {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* ---- Points panel ---- */
+.loc-points-panel {}
+
+.loc-points-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 20px;
+  letter-spacing: 0.2px;
+}
+
+.loc-points-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.loc-point {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--canvas-2);
+  border-left: 3px solid transparent;
+  transition: background 0.2s, border-color 0.2s, transform 0.25s var(--ease-out);
+  cursor: default;
+}
+
+.loc-point:hover {
+  background: var(--canvas);
+  border-left-color: var(--gold);
+  transform: translateX(4px);
+  box-shadow: 2px 2px 16px rgba(17,17,16,0.07);
+}
+
+.loc-point-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loc-point-label {
+  flex: 1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.loc-point-dist {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.loc-point-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  min-width: 52px;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+/* Route highlight */
+.loc-route {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--ink);
+  color: var(--canvas);
+}
+
+.loc-route-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(247,244,239,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loc-route-text { flex: 1; }
+.loc-route-text strong {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--canvas);
+  margin-bottom: 3px;
+}
+.loc-route-text p { font-size: 12px; color: rgba(247,244,239,0.45); line-height: 1.5; }
+
+.loc-route-badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .loc-section { padding: 80px 0; }
+  .loc-container { padding: 0 20px; }
+  .loc-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 480px) {
+  .loc-section { padding: 64px 0; }
+  .loc-container { padding: 0 16px; }
+  .loc-map-iframe { height: 240px; }
+  .loc-point { padding: 12px 12px; gap: 10px; }
+  .loc-route { padding: 14px 16px; gap: 12px; }
+}

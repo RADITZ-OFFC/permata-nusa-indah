@@ -1,0 +1,402 @@
+/* ============================================================
+   KONTAK PAGE — Minimal
+   ============================================================ */
+
+.kp-page { background: var(--canvas); min-height: 100vh; }
+
+/* ---- Hero ---- */
+.kp-hero {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.kp-hero-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.kp-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(17,17,16,0.88) 0%, rgba(17,17,16,0.35) 60%, transparent 100%);
+}
+
+.kp-hero-content {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 40px 56px;
+}
+
+.kp-hero-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 400;
+  color: var(--canvas);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+.kp-hero-content p { font-size: 14px; color: rgba(247,244,239,0.5); }
+
+/* ---- Main ---- */
+.kp-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 40px 100px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- Info grid ---- */
+.kp-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-bottom: 56px;
+}
+
+.kp-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 28px 24px;
+  background: var(--canvas-2);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.kp-info-card:hover { background: var(--canvas-3); }
+
+.kp-info-icon {
+  width: 40px; height: 40px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.kp-info-card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.kp-info-card p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---- Form + sidebar ---- */
+.kp-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---- Form card ---- */
+.kp-form-card {
+  background: var(--canvas);
+  border: 1px solid var(--canvas-3);
+  padding: 40px;
+}
+
+.kp-form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--canvas-3);
+}
+
+.kp-form-header-icon {
+  width: 44px; height: 44px;
+  background: var(--ink);
+  color: var(--canvas);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.kp-form-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.kp-form-header p { font-size: 13px; color: var(--ink-muted); }
+
+.kp-form { display: flex; flex-direction: column; gap: 18px; }
+
+.kp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.kp-field { display: flex; flex-direction: column; gap: 6px; }
+
+.kp-field label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.kp-field input,
+.kp-field textarea {
+  padding: 11px 14px;
+  border: 1px solid var(--canvas-3);
+  background: var(--canvas);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  border-radius: 2px;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.kp-field input:focus,
+.kp-field textarea:focus { border-color: var(--ink); outline: none; }
+
+/* Interest & budget chips */
+.kp-interest-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.kp-chip {
+  padding: 7px 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 2px;
+  border: 1px solid var(--canvas-3);
+  background: var(--canvas);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.kp-chip.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--canvas);
+}
+
+/* Submit */
+.kp-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: var(--ink);
+  color: var(--canvas);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 2px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.kp-submit-btn:hover { background: var(--dark-warm); }
+.kp-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.kp-loading { display: flex; align-items: center; gap: 10px; }
+
+.kp-spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(247,244,239,0.3);
+  border-top-color: var(--canvas);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Success */
+.kp-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0;
+  gap: 12px;
+}
+
+.kp-success-icon svg { color: #10b981; }
+
+.kp-success h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.kp-success p { font-size: 14px; color: var(--ink-light); line-height: 1.7; max-width: 320px; }
+
+.kp-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  background: none;
+  border: 1px solid var(--canvas-3);
+  border-radius: 2px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.kp-reset-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ---- Sidebar ---- */
+.kp-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+/* Map card */
+.kp-map-card {
+  overflow: hidden;
+  background: var(--canvas-2);
+  border: 1px solid var(--canvas-3);
+}
+
+.kp-map-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.kp-map-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.kp-map-overlay {
+  position: absolute; inset: 0;
+  background: rgba(17,17,16,0.35);
+}
+
+.kp-map-pin {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  color: var(--gold);
+  filter: drop-shadow(0 2px 8px rgba(17,17,16,0.4));
+}
+
+.kp-map-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(17,17,16,0.85), transparent);
+}
+
+.kp-map-label strong {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--canvas);
+  margin-bottom: 2px;
+}
+
+.kp-map-label span { font-size: 11px; color: rgba(247,244,239,0.55); line-height: 1.5; }
+
+.kp-maps-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: var(--canvas);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-light);
+  border-top: 1px solid var(--canvas-3);
+  transition: background 0.2s, color 0.2s;
+}
+
+.kp-maps-btn:hover { background: var(--canvas-2); color: var(--ink); }
+
+/* Quick contacts */
+.kp-quick-contacts {
+  background: var(--canvas-2);
+  border: 1px solid var(--canvas-3);
+  padding: 24px;
+}
+
+.kp-quick-contacts h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.kp-qc-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.kp-qc-btn:last-child { margin-bottom: 0; }
+.kp-qc-btn:hover { opacity: 0.85; }
+
+.kp-qc-phone { background: var(--ink); }
+.kp-qc-wa    { background: #25D366; }
+
+.kp-qc-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(247,244,239,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: white;
+}
+
+.kp-qc-btn > div:last-child { display: flex; flex-direction: column; gap: 1px; }
+.kp-qc-btn span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; color: white; }
+.kp-qc-btn small { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .kp-info-grid { grid-template-columns: repeat(2, 1fr); }
+  .kp-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .kp-hero-content { padding: 120px 20px 40px; }
+  .kp-main { padding: 40px 20px 80px; }
+  .kp-info-grid { grid-template-columns: 1fr 1fr; }
+  .kp-form-card { padding: 24px 20px; }
+  .kp-form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .kp-hero-content { padding: 100px 16px 36px; }
+  .kp-main { padding: 32px 16px 64px; }
+  .kp-info-grid { grid-template-columns: 1fr; }
+  .kp-layout { gap: 24px; }
+}

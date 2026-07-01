@@ -1,0 +1,44 @@
+/* ============================================================
+   STATS — Ticker marquee strip only
+   ============================================================ */
+
+.stats-section {
+  background: var(--ink);
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(247,244,239,0.06);
+  border-bottom: 1px solid rgba(247,244,239,0.06);
+}
+
+.stats-ticker {
+  display: flex;
+  overflow: hidden;
+  padding: 18px 0;
+  mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+}
+
+.stats-ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  flex-shrink: 0;
+}
+
+.stats-ticker-item {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(247,244,239,0.45);
+  letter-spacing: 0.3px;
+  padding: 0 32px;
+}
+
+.stats-ticker-sep {
+  color: var(--gold);
+  font-size: 8px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}

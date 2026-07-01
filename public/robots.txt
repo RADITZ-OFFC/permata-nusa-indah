@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://permatanusaindah.id/sitemap.xml
+
+# Block unnecessary paths
+Disallow: /dist/
+Disallow: /*.json$

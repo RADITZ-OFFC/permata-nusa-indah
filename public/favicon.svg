@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background -->
+  <rect width="64" height="64" rx="10" fill="#111110"/>
+
+  <!-- Gold thin border -->
+  <rect x="2" y="2" width="60" height="60" rx="9" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Letter P — Cormorant-style serif proportions, hand-crafted paths -->
+  <!-- Vertical stem -->
+  <rect x="18" y="14" width="5" height="36" rx="1" fill="#F7F4EF"/>
+
+  <!-- Top bowl of P -->
+  <path
+    d="M23 14 h8 a9 9 0 0 1 0 18 h-8 Z"
+    fill="#F7F4EF"
+  />
+
+  <!-- Hollow inside the bowl -->
+  <path
+    d="M24.5 16.5 h6 a6 6 0 0 1 0 12 h-6 Z"
+    fill="#111110"
+  />
+
+  <!-- Gold baseline dot -->
+  <rect x="18" y="52" width="16" height="2" rx="1" fill="#C9A84C" opacity="0.7"/>
+</svg>

@@ -1,0 +1,441 @@
+/* ============================================================
+   TENTANG PAGE — Editorial brand story
+   ============================================================ */
+
+.tp-page { background: var(--canvas); min-height: 100vh; }
+
+/* ---- Hero ---- */
+.tp-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.tp-hero-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.tp-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(17,17,16,0.88) 0%, rgba(17,17,16,0.35) 60%, rgba(17,17,16,0.15) 100%);
+}
+
+.tp-hero-content {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1280px;
+  margin: 0 auto;
+  padding: 160px 40px 64px;
+}
+
+.tp-hero-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 400;
+  color: var(--canvas);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.tp-hero-content p {
+  font-size: 15px;
+  color: rgba(247,244,239,0.5);
+  max-width: 420px;
+}
+
+/* ---- Container ---- */
+.tp-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- Section header ---- */
+.tp-section-header {
+  max-width: 600px;
+  margin-bottom: 56px;
+}
+
+.tp-section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 14px 0 12px;
+}
+
+.tp-section-header p {
+  font-size: 15px;
+  color: var(--ink-light);
+  line-height: 1.75;
+}
+
+/* ============================================================
+   VISION / MISSION / VALUES
+   ============================================================ */
+
+.tp-visi-section { padding: 100px 0; background: var(--canvas); }
+
+.tp-visi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.tp-visi-card {
+  padding: 40px 36px;
+  background: var(--canvas-2);
+}
+
+.tp-visi-icon {
+  width: 48px; height: 48px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.tp-visi-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.tp-visi-card p {
+  font-size: 14px;
+  color: var(--ink-light);
+  line-height: 1.75;
+}
+
+.tp-visi-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tp-visi-card ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.tp-visi-card ul li svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+/* ============================================================
+   STATS BAND
+   ============================================================ */
+
+.tp-stats-section {
+  padding: 72px 0;
+  background: var(--ink);
+}
+
+.tp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(247,244,239,0.06);
+}
+
+.tp-stat-item {
+  padding: 40px 36px;
+  background: var(--ink);
+  text-align: center;
+}
+
+.tp-stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 400;
+  color: var(--gold-light);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tp-stat-lbl {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.35);
+  display: block;
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+
+.tp-timeline-section {
+  padding: 100px 0;
+  background: var(--canvas-2);
+}
+
+.tp-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--canvas-3);
+  transform: translateX(-50%);
+}
+
+.tp-tl-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  position: relative;
+  padding: 32px 0;
+}
+
+.tp-tl-item.left  { }
+.tp-tl-item.right { }
+
+.tp-tl-card {
+  padding: 28px 32px;
+  background: var(--canvas);
+  border: 1px solid var(--canvas-3);
+}
+
+.tp-tl-item.left  .tp-tl-card { margin-right: 48px; }
+.tp-tl-item.right .tp-tl-card { margin-left: 48px; grid-column: 2; }
+.tp-tl-item.right              { direction: ltr; }
+
+.tp-tl-year {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.tp-tl-card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.tp-tl-card p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+.tp-tl-dot {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--canvas-2);
+  z-index: 1;
+}
+
+/* ============================================================
+   TEAM
+   ============================================================ */
+
+.tp-team-section {
+  padding: 100px 0;
+  background: var(--canvas);
+}
+
+.tp-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.tp-team-card { overflow: hidden; background: var(--canvas-2); }
+
+.tp-team-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.tp-team-img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.tp-team-card:hover .tp-team-img { transform: scale(1.04); }
+
+.tp-team-fallback {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: rgba(247,244,239,0.8);
+}
+
+.tp-team-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(17,17,16,0.4) 0%, transparent 60%);
+}
+
+.tp-team-info {
+  padding: 18px 20px;
+}
+
+.tp-team-info h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.tp-team-info span {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   PARTNERS
+   ============================================================ */
+
+.tp-partners-section {
+  padding: 80px 0 100px;
+  background: var(--canvas-2);
+}
+
+.tp-partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.tp-partner-badge {
+  padding: 10px 20px;
+  border: 1px solid var(--canvas-3);
+  background: var(--canvas);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-light);
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.tp-partner-badge:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.tp-cta-row { display: flex; justify-content: center; }
+
+.tp-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  background: var(--ink);
+  color: var(--canvas);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.2s var(--ease-out);
+}
+
+.tp-btn-cta:hover {
+  background: var(--dark-warm);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .tp-team-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .tp-hero-content { padding: 120px 20px 40px; }
+  .tp-container { padding: 0 20px; }
+
+  /* Vision/mission — stack vertically */
+  .tp-visi-grid { grid-template-columns: 1fr; }
+
+  /* Stats — 2 col still works, reduce padding */
+  .tp-stat-item { padding: 28px 20px; }
+  .tp-stat-val  { font-size: 40px; }
+
+  /* Timeline — single column, line on left */
+  .tp-timeline::before {
+    left: 16px;
+    transform: none;
+  }
+
+  .tp-tl-item {
+    grid-template-columns: 1fr;
+    padding-left: 44px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    position: relative; /* ensure dot positioning works */
+  }
+
+  .tp-tl-item.left  .tp-tl-card,
+  .tp-tl-item.right .tp-tl-card {
+    margin: 0;
+    grid-column: 1;
+  }
+
+  .tp-tl-dot {
+    left: 11px;  /* center on the 1px line at left:16px */
+    top: 28px;
+  }
+
+  /* Card padding tighter */
+  .tp-tl-card { padding: 20px 20px; }
+
+  .tp-team-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-section-header { margin-bottom: 36px; }
+}
+
+@media (max-width: 480px) {
+  .tp-hero-content { padding: 100px 20px 36px; }
+  .tp-container { padding: 0 16px; }
+  .tp-team-grid { grid-template-columns: 1fr; }
+  .tp-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-visi-card  { padding: 28px 20px; }
+  .tp-partners-section { padding: 60px 0 80px; }
+}
