@@ -170,8 +170,25 @@
   padding: 14px 16px;
   background: var(--canvas-2);
   border-left: 3px solid transparent;
-  transition: background 0.2s, border-color 0.2s, transform 0.25s var(--ease-out);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease-out), box-shadow 0.3s;
   cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background sweep on hover */
+.loc-point::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(201,168,76,0.06) 0%, transparent 100%);
+  transition: width 0.4s var(--ease-out);
+  z-index: 0;
+}
+
+.loc-point:hover::after {
+  width: 100%;
 }
 
 .loc-point:hover {

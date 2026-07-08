@@ -51,37 +51,45 @@ export default function WhyUsSection() {
           </p>
 
           <div className="whyus-highlights">
-            {highlights.map((h, i) => (
-              <motion.div
-                key={i}
-                className="whyus-hl-row"
-                initial={{ opacity: 0, x: -20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                whileHover={{
-                  x: 6,
-                  boxShadow: '4px 4px 24px rgba(17,17,16,0.10)',
-                  transition: { type: 'spring', stiffness: 400, damping: 28 },
-                }}
-              >
-                <motion.span
-                  className="whyus-hl-num"
-                  whileHover={{ scale: 1.25 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+            {highlights.map((h, i) => {
+              const revealAnims = [
+                { opacity: 0, x: -20 },                           // slide left
+                { opacity: 0, y: 16, filter: 'blur(4px)' },      // blur up
+                { opacity: 0, scale: 0.95 },                       // scale in
+                { opacity: 0, x: 20, filter: 'blur(4px)' },      // blur from right
+              ]
+              return (
+                <motion.div
+                  key={i}
+                  className="whyus-hl-row"
+                  initial={revealAnims[i % revealAnims.length]}
+                  animate={inView ? { opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)' } : {}}
+                  transition={{ delay: 0.25 + i * 0.12, duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  whileHover={{
+                    x: 6,
+                    boxShadow: '4px 4px 24px rgba(17,17,16,0.10)',
+                    transition: { type: 'spring', stiffness: 400, damping: 28 },
+                  }}
                 >
-                  0{i + 1}
-                </motion.span>
-                <div className="whyus-hl-text">
-                  <motion.strong
-                    whileHover={{ color: 'var(--gold-deep)' }}
-                    transition={{ duration: 0.15 }}
+                  <motion.span
+                    className="whyus-hl-num"
+                    whileHover={{ scale: 1.25 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 20 }}
                   >
-                    {h.title}
-                  </motion.strong>
-                  <span>{h.sub}</span>
-                </div>
-              </motion.div>
-            ))}
+                    0{i + 1}
+                  </motion.span>
+                  <div className="whyus-hl-text">
+                    <motion.strong
+                      whileHover={{ color: 'var(--gold-deep)' }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      {h.title}
+                    </motion.strong>
+                    <span>{h.sub}</span>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
 
           <Link to="/tentang" className="whyus-cta">
@@ -89,12 +97,12 @@ export default function WhyUsSection() {
           </Link>
         </motion.div>
 
-        {/* Right: photo */}
+        {/* Right: photo — clip-path reveal */}
         <motion.div
           className="whyus-right"
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+          animate={inView ? { opacity: 1, clipPath: 'inset(0 0 0% 0)' } : {}}
+          transition={{ duration: 0.85, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="whyus-photo-wrap">
             <img

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronDown } from 'lucide-react'
@@ -34,12 +34,29 @@ const slides = [
 export default function HeroSection() {
   const [current, setCurrent] = useState(0)
   const [auto, setAuto]       = useState(true)
+  const [scrollY, setScrollY] = useState(0)
+  const heroRef               = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (!auto) return
     const t = setInterval(() => setCurrent(c => (c + 1) % slides.length), 6000)
     return () => clearInterval(t)
   }, [current, auto])
+
+  // Parallax on scroll
+  const onScroll = useCallback(() => {
+    if (heroRef.current) {
+      const rect = heroRef.current.getBoundingClientRect()
+      if (rect.bottom > 0) {
+        setScrollY(window.scrollY)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [onScroll])
 
   const goTo = (i: number) => {
     setCurrent(i)
@@ -52,21 +69,26 @@ export default function HeroSection() {
   const curr  = String(current + 1).padStart(2, '0')
 
   return (
-    <section className="hero" aria-label="Hero">
+    <section className="hero" aria-label="Hero" ref={heroRef}>
 
-      {/* Background */}
+      {/* Background with parallax */}
       <div className="hero-bg-wrap">
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={`bg-${current}`}
-            className="hero-bg"
-            style={{ backgroundImage: `url(${slide.bg})` }}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1.0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          />
-        </AnimatePresence>
+        <div
+          className="hero-bg-parallax"
+          style={{ transform: `translateY(${scrollY * 0.25}px)` }}
+        >
+          <AnimatePresence mode="sync">
+            <motion.div
+              key={`bg-${current}`}
+              className="hero-bg"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              initial={{ opacity: 0, scale: 1.12 }}
+              animate={{ opacity: 1, scale: 1.08 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            />
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Overlay */}
@@ -117,47 +139,61 @@ export default function HeroSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Headline */}
+        {/* Headline — staggered word reveal */}
         <AnimatePresence mode="wait">
           <motion.h1
             key={`title-${current}`}
             className="hero-title"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            {slide.title.map((line, i) => (
-              <span key={i} style={{ display: 'block' }}>
-                {i === slide.titleItalic ? <em>{line}</em> : line}
-              </span>
-            ))}
+            {slide.title.map((line, i) => {
+              const words = line.split(' ')
+              return (
+                <span key={i} style={{ display: 'block' }}>
+                  {words.map((word, wi) => (
+                    <motion.span
+                      key={wi}
+                      style={{ display: 'inline-block', overflow: 'hidden' }}
+                      initial={{ opacity: 0, y: 32 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.15 + (i * words.length + wi) * 0.08,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                    >
+                      {i === slide.titleItalic ? <em>{word}</em> : word}
+                      {wi < words.length - 1 && '\u00A0'}
+                    </motion.span>
+                  ))}
+                </span>
+              )
+            })}
           </motion.h1>
         </AnimatePresence>
 
         {/* Bottom row */}
         <div className="hero-bottom">
 
-          {/* Description */}
+          {/* Description — blur reveal */}
           <AnimatePresence mode="wait">
             <motion.p
               key={`desc-${current}`}
               className="hero-desc"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              initial={{ opacity: 0, filter: 'blur(8px)', y: 12 }}
+              animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              exit={{ opacity: 0, filter: 'blur(8px)' }}
+              transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
             >
               {slide.desc}
             </motion.p>
           </AnimatePresence>
 
-          {/* CTAs */}
+          {/* CTAs — slide in from right */}
           <motion.div
             className="hero-actions"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <Link to="/properti" className="hero-cta-primary">
               <span>Lihat Properti</span>

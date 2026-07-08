@@ -5,6 +5,16 @@
 .fp-section {
   padding: 120px 0;
   background: var(--canvas);
+  position: relative;
+}
+
+/* Subtle top separator — breaks uniform horizontal lines */
+.fp-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--canvas-3) 20%, var(--canvas-3) 80%, transparent 100%);
 }
 
 .fp-inner {
@@ -159,6 +169,29 @@
 
 .fp-card:hover .fp-card-img {
   transform: scale(1.04);
+}
+
+/* Hover lift shadow */
+.fp-card:hover {
+  z-index: 1;
+}
+
+/* Grain overlay on hover — editorial touch */
+.fp-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s;
+}
+
+.fp-card:hover::after {
+  opacity: 0.06;
 }
 
 /* Dark gradient from bottom */

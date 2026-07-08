@@ -93,13 +93,21 @@ export default function LocationSection() {
             <div className="loc-points-grid">
               {nearby.map((pt, i) => {
                 const Icon = pt.icon
+                const revealAnims = [
+                  { opacity: 0, x: 16 },
+                  { opacity: 0, clipPath: 'inset(0 0 0 100%)' },
+                  { opacity: 0, y: 12, filter: 'blur(4px)' },
+                  { opacity: 0, x: -16 },
+                  { opacity: 0, scale: 0.95 },
+                  { opacity: 0, clipPath: 'inset(0 0 0 100%)' },
+                ]
                 return (
                   <motion.div
                     key={i}
                     className="loc-point"
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.25 + i * 0.06 }}
+                    initial={revealAnims[i % revealAnims.length]}
+                    animate={inView ? { opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', clipPath: 'inset(0 0 0 0%)' } : {}}
+                    transition={{ delay: 0.3 + i * 0.08, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
                     <div className="loc-point-icon" style={{ background: `${pt.color}18`, color: pt.color }}>
                       <Icon size={16} />

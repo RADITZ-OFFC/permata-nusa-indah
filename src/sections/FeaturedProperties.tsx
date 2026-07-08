@@ -116,14 +116,26 @@ export default function FeaturedProperties() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {filtered.map((prop, i) => (
-              <motion.div
-                key={prop.id}
-                className={`fp-card ${i === 0 ? 'fp-card--feature' : ''}`}
-                initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-              >
+            {filtered.map((prop, i) => {
+              const isFeature = i === 0
+              const reveals = [
+                { opacity: 0, y: 32 },                              // standard
+                { opacity: 0, x: -24, filter: 'blur(6px)' },       // blur from left
+                { opacity: 0, scale: 0.95 },                        // scale up
+                { opacity: 0, clipPath: 'inset(0 0 100% 0)' },     // clip from bottom
+                { opacity: 0, y: 24, filter: 'blur(4px)' },        // soft blur
+                { opacity: 0, x: 24 },                              // slide from right
+              ]
+              const anim = reveals[i % reveals.length]
+
+              return (
+                <motion.div
+                  key={prop.id}
+                  className={`fp-card ${isFeature ? 'fp-card--feature' : ''}`}
+                  initial={anim}
+                  animate={inView ? { opacity: 1, y: 0, x: 0, scale: 1, filter: 'blur(0px)', clipPath: 'inset(0 0 0% 0)' } : {}}
+                  transition={{ duration: 0.65, delay: i * 0.09, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
                 <Link to={`/properti/${prop.id}`} className="fp-card-link">
                   <div
                     className="fp-card-img"
@@ -165,7 +177,8 @@ export default function FeaturedProperties() {
                   </div>
                 </Link>
               </motion.div>
-            ))}
+              )
+            })}
           </motion.div>
         </AnimatePresence>
 

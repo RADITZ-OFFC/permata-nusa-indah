@@ -59,6 +59,7 @@
   overflow: hidden;
   background: var(--ink);
   aspect-ratio: 16/9;
+  box-shadow: inset 0 0 0 1px rgba(247,244,239,0.06);
 }
 
 .vt-display-img {
@@ -121,6 +122,21 @@
   justify-content: center;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s var(--ease-out);
+}
+
+/* Pulsing ring behind play button */
+.vt-play-btn::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(247,244,239,0.15);
+  animation: playPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes playPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50%      { transform: scale(1.15); opacity: 0; }
 }
 
 .vt-play-btn:hover {

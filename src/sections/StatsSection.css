@@ -23,8 +23,12 @@
   align-items: center;
   gap: 0;
   white-space: nowrap;
-  animation: marquee 30s linear infinite;
+  animation: marquee 45s linear infinite;
   flex-shrink: 0;
+}
+
+.stats-section:hover .stats-ticker-inner {
+  animation-play-state: paused;
 }
 
 .stats-ticker-item {
@@ -34,6 +38,11 @@
   color: rgba(247,244,239,0.45);
   letter-spacing: 0.3px;
   padding: 0 32px;
+  transition: color 0.3s;
+}
+
+.stats-section:hover .stats-ticker-item {
+  color: rgba(247,244,239,0.65);
 }
 
 .stats-ticker-sep {
@@ -41,4 +50,9 @@
   font-size: 8px;
   flex-shrink: 0;
   opacity: 0.6;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.stats-section:hover .stats-ticker-sep {
+  transform: scale(1.4) rotate(45deg);
 }

@@ -85,7 +85,7 @@
   margin-bottom: 20px;
   user-select: none;
   display: block;
-  animation: fadeUp 0.7s var(--ease-out) both;
+  animation: blurReveal 0.8s var(--ease-out) both;
   animation-delay: 0.1s;
 }
 
@@ -98,14 +98,16 @@
   line-height: 1.5;
   letter-spacing: -0.01em;
   margin-bottom: 36px;
-  animation: fadeUp 0.65s var(--ease-out) both;
-  animation-delay: 0.18s;
+  animation: blurReveal 0.9s var(--ease-out) both;
+  animation-delay: 0.2s;
 }
 
 .testi-quote-author {
   display: flex;
   align-items: center;
   gap: 16px;
+  animation: slideInLeft 0.6s var(--ease-out) both;
+  animation-delay: 0.35s;
 }
 
 .testi-author-line {
